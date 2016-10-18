@@ -24,5 +24,8 @@ textarea {
 }
 
 .jumbotron {
-background-image: url("~/img/dice.jpg");
-background-size: cover;}
+      background: 
+          url(~/Images/dice.jpg) no-repeat center center fixed; 
+      background-size: cover;
+}
+
