@@ -25,19 +25,19 @@ textarea {
 
 .jumbotron {
       background: 
-          linear-gradient(0deg, #4f0749, transparent),
+          linear-gradient(0deg, #53052c, transparent),
           url("Images/dice.jpg") no-repeat center center fixed; 
       background-size: cover;
 }
 
 .jumbotron p
 {
-    text-shadow: 2px 2px 4px #4f0749;
+    text-shadow: 2px 2px 4px #53052c;
     color: #e0ebf3;
 }
 
 .jumbotron h1
 {
-    text-shadow: 4px 4px 15px #4f0749;
+    text-shadow: 4px 4px 15px #53052c;
     color: #e0ebf3;
 }

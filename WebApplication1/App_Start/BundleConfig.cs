@@ -24,7 +24,7 @@ namespace WebApplication1
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootswatch/cyborg/bootstrap.css",
+                      "~/Content/bootswatch/united/bootstrap.css",
                       "~/Content/site.css"));
         }
     }
