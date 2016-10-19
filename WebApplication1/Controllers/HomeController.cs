@@ -10,6 +10,10 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated) 
+            {
+                return View("UserIndex");
+            }
             return View();
         }
 
@@ -18,7 +22,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult PreviousGames()
         {
             ViewBag.Message = "Find Previous Games Here!";
 
@@ -31,5 +35,7 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+
     }
 }
