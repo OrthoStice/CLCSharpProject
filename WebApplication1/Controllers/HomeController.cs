@@ -8,14 +8,18 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+
+
         public ActionResult Index()
         {
             if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated) 
             {
-                return View("UserIndex");
+                return View();
             }
-            return View();
-        }
+
+            return View("LoginRequest");
+
+    }
 
         public ActionResult About()
         {
