@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using WebApplication1.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Game.Models
 {
@@ -11,6 +13,9 @@ namespace Game.Models
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameStartDate { get; set; }
+        public int UserID { get; set; }
+        [ForeignKey("UserID")]
+        public virtual ApplicationUser User { get; set; }
     }
 
     public class Player
