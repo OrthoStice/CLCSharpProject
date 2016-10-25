@@ -6,6 +6,7 @@ using System.Data.Entity;
 using WebApplication1.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace Game.Models
 {
     public class Game
@@ -24,7 +25,8 @@ namespace Game.Models
         public string PlayerFirstName { get; set; }
         public string PlayerGameName { get; set; }
     }
-
+    
+    //used to keep score//
     public class Score
     {
         public int Id { get; set; }
