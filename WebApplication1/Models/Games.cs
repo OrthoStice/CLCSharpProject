@@ -5,18 +5,23 @@ using System.Web;
 using System.Data.Entity;
 using WebApplication1.Models;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Game.Models
 {
+    public class MyUser : IdentityUser<id>
+    {
+        public virtual ICollection<Game> Games { get; set; }
+
+    }
+
     public class Game
     {
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameStartDate { get; set; }
-        public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual ApplicationUser User { get; set; }
+        public virtual MyUser UserId { get; set; }
     }
 
     public class Player
@@ -25,8 +30,7 @@ namespace Game.Models
         public string PlayerFirstName { get; set; }
         public string PlayerGameName { get; set; }
     }
-    
-    //used to keep score//
+
     public class Score
     {
         public int Id { get; set; }
@@ -37,11 +41,11 @@ namespace Game.Models
         public int TurnScore { get; set; }
     }
 
-
-public class GameContext : DbContext
+    public class GameContext : DbContext
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Score> Scores { get; set; }
     }
+
 }
