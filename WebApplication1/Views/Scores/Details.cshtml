@@ -1,0 +1,58 @@
+﻿@model Game.Models.Score
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Score</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GameID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurnNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurnNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurnTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurnTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TurnScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TurnScore)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -7,7 +7,7 @@ using WebApplication1.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Game.Models
+namespace FarkleGame.Models
 {
     public class MyUser : IdentityUser
     {
@@ -41,6 +41,7 @@ namespace Game.Models
 
     public class GameContext : IdentityDbContext<MyUser>
     {
+        public DbSet<MyUser> MyUsers { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Score> Scores { get; set; }

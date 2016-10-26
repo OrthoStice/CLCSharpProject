@@ -29,5 +29,13 @@ namespace WebApplication1.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<FarkleGame.Models.Player> Players { get; set; }
+
+        public System.Data.Entity.DbSet<FarkleGame.Models.MyUser> MyUsers { get; set; }
+
+        public System.Data.Entity.DbSet<FarkleGame.Models.Game> Games { get; set; }
+
+        public System.Data.Entity.DbSet<FarkleGame.Models.Score> Scores { get; set; }
     }
 }
