@@ -19,40 +19,42 @@ namespace WebApplication1.Models
         }
     }
 
+    public class Game
+    {
+        public int Id { get; set; }
+        public string GameName { get; set; }
+        public DateTime GameStartDate { get; set; }
+        public virtual ApplicationUser UserId { get; set; }
+    }
+
+    public class Player
+    {
+        public int Id { get; set; }
+        public string PlayerFirstName { get; set; }
+        public string PlayerGameName { get; set; }
+    }
+
+    public class Score
+    {
+        public int Id { get; set; }
+        public int GameID { get; set; }
+        public int TurnNum { get; set; }
+        public DateTime TurnTime { get; set; }
+        public int PlayerID { get; set; }
+        public int TurnScore { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-        public class Game
-        {
-            public int Id { get; set; }
-            public string GameName { get; set; }
-            public System.DateTime GameStartDate { get; set; }
-            public virtual ApplicationUser UserId { get; set; }
-        }
-
-        public class Player
-        {
-            public int Id { get; set; }
-            public string PlayerFirstName { get; set; }
-            public string PlayerGameName { get; set; }
-        }
-
-        public class Score
-        {
-            public int Id { get; set; }
-            public int GameID { get; set; }
-            public int TurnNum { get; set; }
-            public DateTime TurnTime { get; set; }
-            public int PlayerID { get; set; }
-            public int TurnScore { get; set; }
         }
 
         public DbSet<Game> Games { get; set; }
