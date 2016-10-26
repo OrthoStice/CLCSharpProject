@@ -5,18 +5,16 @@ using System.Web;
 using System.Data.Entity;
 using WebApplication1.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-
-namespace Game.Models
+namespace FarkleGameScore.Models
 {
     public class Game
     {
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameStartDate { get; set; }
-        public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser UserId { get; set; }
     }
 
     public class Player
@@ -38,7 +36,7 @@ namespace Game.Models
     }
 
 
-public class GameContext : DbContext
+public class GameContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }

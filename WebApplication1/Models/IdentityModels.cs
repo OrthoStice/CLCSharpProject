@@ -30,7 +30,6 @@ namespace WebApplication1.Models
             return new ApplicationDbContext();
         }
     }
+
 }
 
-
-//commit test delete this line
