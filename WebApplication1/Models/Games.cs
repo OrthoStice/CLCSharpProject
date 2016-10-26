@@ -5,14 +5,12 @@ using System.Web;
 using System.Data.Entity;
 using WebApplication1.Models;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Game.Models
 {
-    public class MyUser : IdentityUser<id>
+    public class MyUser : IdentityUser
     {
-        public virtual ICollection<Game> Games { get; set; }
 
     }
 
@@ -41,7 +39,7 @@ namespace Game.Models
         public int TurnScore { get; set; }
     }
 
-    public class GameContext : DbContext
+    public class GameContext : IdentityDbContext<MyUser>
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
