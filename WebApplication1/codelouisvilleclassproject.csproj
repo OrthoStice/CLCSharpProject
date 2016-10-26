@@ -209,6 +209,14 @@
     <Compile Include="Migrations\201610261424090_identity.Designer.cs">
       <DependentUpon>201610261424090_identity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610261448322_new.cs" />
+    <Compile Include="Migrations\201610261448322_new.Designer.cs">
+      <DependentUpon>201610261448322_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610261512046_drop users table.cs" />
+    <Compile Include="Migrations\201610261512046_drop users table.Designer.cs">
+      <DependentUpon>201610261512046_drop users table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Games.cs" />
@@ -356,6 +364,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610261424090_identity.resx">
       <DependentUpon>201610261424090_identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610261448322_new.resx">
+      <DependentUpon>201610261448322_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610261512046_drop users table.resx">
+      <DependentUpon>201610261512046_drop users table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

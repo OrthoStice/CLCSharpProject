@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using FarkleGame.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -86,6 +87,11 @@ namespace WebApplication1
             }
             return manager;
         }
+
+        internal Task CreateAsync(User user, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.
@@ -104,6 +110,11 @@ namespace WebApplication1
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+
+        internal Task SignInAsync(User user, bool isPersistent, bool rememberBrowser)
+        {
+            throw new NotImplementedException();
         }
     }
 }
