@@ -11,107 +11,107 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class MyUsersController : Controller
+    public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: MyUsers
+        // GET: Users
         public ActionResult Index()
         {
-            return View(db.MyUsers.ToList());
+            return View(db.User.ToList());
         }
 
-        // GET: MyUsers/Details/5
+        // GET: Users/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MyUser myUser = db.MyUsers.Find(id);
-            if (myUser == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(myUser);
+            return View(user);
         }
 
-        // GET: MyUsers/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MyUsers/Create
+        // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] MyUser myUser)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.MyUsers.Add(myUser);
+                db.User.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(myUser);
+            return View(user);
         }
 
-        // GET: MyUsers/Edit/5
+        // GET: Users/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MyUser myUser = db.MyUsers.Find(id);
-            if (myUser == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(myUser);
+            return View(user);
         }
 
-        // POST: MyUsers/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] MyUser myUser)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(myUser).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(myUser);
+            return View(user);
         }
 
-        // GET: MyUsers/Delete/5
+        // GET: Users/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MyUser myUser = db.MyUsers.Find(id);
-            if (myUser == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(myUser);
+            return View(user);
         }
 
-        // POST: MyUsers/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            MyUser myUser = db.MyUsers.Find(id);
-            db.MyUsers.Remove(myUser);
+            User user = db.User.Find(id);
+            db.User.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

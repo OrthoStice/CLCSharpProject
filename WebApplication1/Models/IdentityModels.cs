@@ -32,7 +32,7 @@ namespace WebApplication1.Models
 
         public System.Data.Entity.DbSet<FarkleGame.Models.Player> Players { get; set; }
 
-        public System.Data.Entity.DbSet<FarkleGame.Models.MyUser> MyUsers { get; set; }
+        public System.Data.Entity.DbSet<FarkleGame.Models.User> User { get; set; }
 
         public System.Data.Entity.DbSet<FarkleGame.Models.Game> Games { get; set; }
 
