@@ -9,17 +9,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FarkleGame.Models
 {
-    public class User : IdentityUser
-    {
-
-    }
 
     public class Game
     {
         public int Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameStartDate { get; set; }
-        public virtual User UserId { get; set; }
+        public virtual ApplicationUser UserId { get; set; }
     }
 
     public class Player
@@ -41,7 +37,6 @@ namespace FarkleGame.Models
 
     public class GameContext : IdentityDbContext<User>
     {
-        public override IDbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Score> Scores { get; set; }
