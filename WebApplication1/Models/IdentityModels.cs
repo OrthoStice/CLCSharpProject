@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Web;
 
 namespace WebApplication1.Models
 {
@@ -23,8 +24,19 @@ namespace WebApplication1.Models
     {
         public int Id { get; set; }
         public string GameName { get; set; }
-        public DateTime GameStartDate { get; set; }
-        public virtual ApplicationUser UserId { get; set; }
+        private DateTime? gameStartDate;
+        public DateTime GameStartDate
+        {
+            get { return gameStartDate ?? DateTime.Now; }
+            set { gameStartDate = value; }
+        }
+
+        public virtual string UserId
+        {
+            get { return HttpContext.Current.User.Identity.GetUserId(); }
+
+            set { }
+        }
     }
 
     public class Player
