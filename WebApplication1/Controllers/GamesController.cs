@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections;
 
 namespace WebApplication1.Controllers
 {
@@ -17,7 +20,9 @@ namespace WebApplication1.Controllers
         // GET: Games
         public ActionResult Index()
         {
-            return View(db.Games.ToList());
+            var currentUser = HttpContext.User.Identity.GetUserId();
+            var userGames = db.Games.Where(Game => Game.UserId == currentUser);
+            return View(userGames);
         }
 
         // GET: Games/Details/5
