@@ -42,7 +42,18 @@ textarea {
     color: #e0ebf3;
 }
 
-#NewGameButton
+.jumbotron a
 {
+    text-shadow: 2px 2px 4px #060007;
+}
 
+#NewGameButtondiv
+{
+    padding-left:0;
+}
+
+#NewGameForm
+{
+    color: white;
+    text-size-adjust: 150%;
 }

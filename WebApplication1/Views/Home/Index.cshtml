@@ -10,9 +10,10 @@
     </p>
        <div id="NewGameForm">
           <form>Game Title:<br /> <input type="text" placeholder="Enter a unique game title" name="gameTitle" maxlength="50" /></form>
-          <form>Number of Players:<br /> <input type="number" name="numberOfPlayers" min="2" max="10" placeholder="#" /></form>
+          <form>Number of Players:<br /> <input type="number" name="numberOfPlayers" min="2" max="10" placeholder="# 2-10" /></form> 
        </div>
-       <div id="NewGameButtondiv" class="container">
+    <div><br /></div>
+       <div id="NewGameButtondiv">
           <p><a href=@Url.Action("Create", "Games") id="NewGameButton" class="btn btn-primary btn-lg">Start A New Game</a></p>
        </div>
  </div>
