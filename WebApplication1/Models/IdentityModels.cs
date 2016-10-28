@@ -39,6 +39,12 @@ namespace WebApplication1.Models
             set { }
         }
     }
+    //ForeignKey syntax
+    //public int StandardRefId { get; set; }
+
+    //[ForeignKey("StandardRefId")]
+    //public Standard Standard { get; set; }
+
 
     public class Player
     {
@@ -50,10 +56,23 @@ namespace WebApplication1.Models
     public class Score
     {
         public int Id { get; set; }
-        public int GameID { get; set; }
+
+        public int GameId { get; set; }
+        [ForeignKey("GameId")]
+        public Game game { get; set; }
+
         public int TurnNum { get; set; }
-        public DateTime TurnTime { get; set; }
-        public int PlayerID { get; set; }
+        private DateTime? turnTime;
+        public DateTime TurnTime
+        {
+            get { return turnTime ?? DateTime.Now; }
+            set { turnTime = value; }
+        }
+
+        public int PlayerId { get; set; }
+        [ForeignKey("PlayerId")]
+        public Player player { get; set; }
+
         public int TurnScore { get; set; }
     }
 

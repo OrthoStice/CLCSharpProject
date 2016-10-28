@@ -10,107 +10,107 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class GamesController : Controller
+    public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Games
+        // GET: Players
         public ActionResult Index()
         {
-            return View(db.Games.ToList());
+            return View(db.Players.ToList());
         }
 
-        // GET: Games/Details/5
+        // GET: Players/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Player player = db.Players.Find(id);
+            if (player == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(player);
         }
 
-        // GET: Games/Create
+        // GET: Players/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: Players/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GameName,GameStartDate,UserId")] Game game)
+        public ActionResult Create([Bind(Include = "Id,PlayerFirstName,PlayerGameName")] Player player)
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
+                db.Players.Add(player);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(game);
+            return View(player);
         }
 
-        // GET: Games/Edit/5
+        // GET: Players/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Player player = db.Players.Find(id);
+            if (player == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(player);
         }
 
-        // POST: Games/Edit/5
+        // POST: Players/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GameName,GameStartDate,UserId")] Game game)
+        public ActionResult Edit([Bind(Include = "Id,PlayerFirstName,PlayerGameName")] Player player)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(game).State = EntityState.Modified;
+                db.Entry(player).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(game);
+            return View(player);
         }
 
-        // GET: Games/Delete/5
+        // GET: Players/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Player player = db.Players.Find(id);
+            if (player == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(player);
         }
 
-        // POST: Games/Delete/5
+        // POST: Players/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Game game = db.Games.Find(id);
-            db.Games.Remove(game);
+            Player player = db.Players.Find(id);
+            db.Players.Remove(player);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

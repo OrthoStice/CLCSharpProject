@@ -10,107 +10,116 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class GamesController : Controller
+    public class ScoresController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Games
+        // GET: Scores
         public ActionResult Index()
         {
-            return View(db.Games.ToList());
+            var scores = db.Scores.Include(s => s.game).Include(s => s.player);
+            return View(scores.ToList());
         }
 
-        // GET: Games/Details/5
+        // GET: Scores/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(score);
         }
 
-        // GET: Games/Create
+        // GET: Scores/Create
         public ActionResult Create()
         {
+            ViewBag.GameId = new SelectList(db.Games, "Id", "GameName");
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName");
             return View();
         }
 
-        // POST: Games/Create
+        // POST: Scores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GameName,GameStartDate,UserId")] Game game)
+        public ActionResult Create([Bind(Include = "Id,GameId,TurnNum,TurnTime,PlayerId,TurnScore")] Score score)
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
+                db.Scores.Add(score);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(game);
+            ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            return View(score);
         }
 
-        // GET: Games/Edit/5
+        // GET: Scores/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            return View(score);
         }
 
-        // POST: Games/Edit/5
+        // POST: Scores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GameName,GameStartDate,UserId")] Game game)
+        public ActionResult Edit([Bind(Include = "Id,GameId,TurnNum,TurnTime,PlayerId,TurnScore")] Score score)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(game).State = EntityState.Modified;
+                db.Entry(score).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(game);
+            ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            return View(score);
         }
 
-        // GET: Games/Delete/5
+        // GET: Scores/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(score);
         }
 
-        // POST: Games/Delete/5
+        // POST: Scores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Game game = db.Games.Find(id);
-            db.Games.Remove(game);
+            Score score = db.Scores.Find(id);
+            db.Scores.Remove(score);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
