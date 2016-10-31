@@ -52,7 +52,7 @@ textarea {
     padding-left:0;
 }
 
-#NewGameForm
+#NewGameForm .FormTitle
 {
     color: white;
     text-size-adjust: 150%;
