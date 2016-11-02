@@ -51,13 +51,13 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GameName,GameStartDate,UserId")] Game game)
+        public ActionResult Create([Bind(Include = "Id,GameName,GameStartDate,UserId,numOfPlayers")] Game game)
         {
             if (ModelState.IsValid)
             {
                 db.Games.Add(game);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Players");
             }
 
             return View(game);

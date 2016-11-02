@@ -38,6 +38,7 @@ namespace WebApplication1.Models
 
             set { }
         }
+        public int numOfPlayers { get; set; }
     }
     //ForeignKey syntax
     //public int StandardRefId { get; set; }

@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201610280130103_scoresDateTime.Designer.cs">
       <DependentUpon>201610280130103_scoresDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611020143187_numOfPlayers.cs" />
+    <Compile Include="Migrations\201611020143187_numOfPlayers.Designer.cs">
+      <DependentUpon>201611020143187_numOfPlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -348,6 +352,7 @@
     <Content Include="Views\Scores\Details.cshtml" />
     <Content Include="Views\Scores\Edit.cshtml" />
     <Content Include="Views\Scores\Index.cshtml" />
+    <Content Include="Views\Games\View33.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610280130103_scoresDateTime.resx">
       <DependentUpon>201610280130103_scoresDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020143187_numOfPlayers.resx">
+      <DependentUpon>201611020143187_numOfPlayers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

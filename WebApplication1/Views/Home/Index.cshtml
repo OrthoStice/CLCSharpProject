@@ -1,20 +1,50 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@model WebApplication1.Models.Game
 
-<div class="jumbotron">
-    <h1>Farkle Score Keeper</h1>
-    <p class="lead">
-        For game rules and more info check out the <a href=@Url.Action("About","Home")>About</a> link. If you'd like to pick up on an old game or view scores check out the<a href=@Url.Action("Index", "Games")> Previous Games</a> link.<br />
-        To start a new game enter your info and press the button!
-    </p>
-       <div id="NewGameForm">
-          <form><span class="FormTitle">Game Title:</span><br /> <input type="text" placeholder="Enter a unique game title" name="gameTitle" maxlength="50" /></form>
-          <form><span class="FormTitle">Number of Players:</span><br /> <input type="number" name="numberOfPlayers" min="2" max="10" placeholder="# 2-10" /></form> 
-       </div>
-    <div><br /></div>
-       <div id="NewGameButtondiv">
-          <p><a href=@Url.Action("Create", "Games") id="NewGameButton" class="btn btn-primary btn-lg">Start A New Game</a></p>
-       </div>
- </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="jumbotron">
+            <h1>Farkle Score Keeper</h1>
+            <p class="lead">
+                For game rules and more info check out the <a href=@Url.Action("About","Home")>About</a> link. If you'd like to pick up on an old game or view scores check out the<a href=@Url.Action("Index", "Games")> Previous Games</a> link.<br />
+                To start a new game enter your info and press the button!
+            </p>
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GameName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.GameName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GameName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.numOfPlayers, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.numOfPlayers, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.numOfPlayers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+
  
