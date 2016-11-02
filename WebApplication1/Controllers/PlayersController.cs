@@ -52,13 +52,15 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 var gameName = Session["GameName"];
+                var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
                 db.Players.Add(player);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index" );
             }
 
             return View(player);
         }
+
 
         // GET: Players/Edit/5
         public ActionResult Edit(int? id)
