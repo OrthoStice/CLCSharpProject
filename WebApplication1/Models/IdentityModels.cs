@@ -22,68 +22,10 @@ namespace WebApplication1.Models
         }
     }
 
-    public class Game
-    {
-        public int Id { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [Display(Name = "Game Name")]
-        public string GameName { get; set; }
-        private DateTime? gameStartDate;
-        public DateTime GameStartDate
-        {
-            get { return gameStartDate ?? DateTime.Now; }
-            set { gameStartDate = value; }
-        }
-
-        public virtual string UserId
-        {
-            get { return HttpContext.Current.User.Identity.GetUserId(); }
-
-            set { }
-        }
-
-        [Required]
-        [Range(2,10, ErrorMessage ="Enter a Number Between 2 and 10")]
-        [Display(Name = "How Many Players?")]
-        public int numOfPlayers { get; set; }
-    }
-    //ForeignKey syntax
-    //public int StandardRefId { get; set; }
-
-    //[ForeignKey("StandardRefId")]
-    //public Standard Standard { get; set; }
 
 
-    public class Player
-    {
-        public int Id { get; set; }
-        public string PlayerFirstName { get; set; }
-        public string PlayerGameName { get; set; }
-    }
 
-    public class Score
-    {
-        public int Id { get; set; }
 
-        public int GameId { get; set; }
-        [ForeignKey("GameId")]
-        public Game game { get; set; }
-
-        public int TurnNum { get; set; }
-        private DateTime? turnTime;
-        public DateTime TurnTime
-        {
-            get { return turnTime ?? DateTime.Now; }
-            set { turnTime = value; }
-        }
-
-        public int PlayerId { get; set; }
-        [ForeignKey("PlayerId")]
-        public Player player { get; set; }
-
-        public int TurnScore { get; set; }
-    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
