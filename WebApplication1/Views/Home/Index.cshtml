@@ -1,11 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model WebApplication1.Models.Game
+@{
+    ViewBag.Title = "Create";
 }
-@model WebApplication1.Models.Game
 
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create","Games"))
     {
         @Html.AntiForgeryToken()
         <div class="jumbotron">
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="submit" value="Start New Game" class="btn btn-default" />
                     </div>
                 </div>
             </div>

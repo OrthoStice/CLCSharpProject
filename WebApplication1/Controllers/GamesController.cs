@@ -57,7 +57,7 @@ namespace WebApplication1.Controllers
             {
                 db.Games.Add(game);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Players");
+                return RedirectToAction("Index");
             }
 
             return View(game);
