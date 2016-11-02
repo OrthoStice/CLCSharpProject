@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models
 {
@@ -24,6 +25,9 @@ namespace WebApplication1.Models
     public class Game
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Game Name")]
         public string GameName { get; set; }
         private DateTime? gameStartDate;
         public DateTime GameStartDate
@@ -38,6 +42,10 @@ namespace WebApplication1.Models
 
             set { }
         }
+
+        [Required]
+        [Range(2,10, ErrorMessage ="Enter a Number Between 2 and 10")]
+        [Display(Name = "How Many Players?")]
         public int numOfPlayers { get; set; }
     }
     //ForeignKey syntax
