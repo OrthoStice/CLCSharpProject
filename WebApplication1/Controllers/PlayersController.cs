@@ -13,6 +13,7 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+       
 
         // GET: Players
         public ActionResult Index()
@@ -50,6 +51,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                var gameName = Session["GameName"];
                 db.Players.Add(player);
                 db.SaveChanges();
                 return RedirectToAction("Index");

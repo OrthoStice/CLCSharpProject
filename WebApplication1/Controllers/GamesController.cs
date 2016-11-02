@@ -16,6 +16,7 @@ namespace WebApplication1.Controllers
     public class GamesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly object storedGameName;
 
         // GET: Games
         public ActionResult Index()
@@ -57,10 +58,11 @@ namespace WebApplication1.Controllers
             {
                 db.Games.Add(game);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["GameName"] = game.GameName;
+                return RedirectToAction("Create","Players");
             }
 
-            return View(game);
+            return View();
         }
 
         // GET: Games/Edit/5
