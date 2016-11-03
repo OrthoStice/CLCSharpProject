@@ -53,7 +53,10 @@ namespace WebApplication1.Controllers
             {
                 var gameName = Session["GameName"];
                 var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
-                db.Players.Add(player);
+                for (int i = (Convert.ToInt32(Session["NumOfPlayers"])); i > 0; i--)
+                {
+                    db.Players.Add(player);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index" );
             }
