@@ -9,7 +9,6 @@ namespace WebApplication1.Models
     public class Player
     {
         public int Id { get; set; }
-        public string PlayerFirstName { get; set; }
-        public string PlayerGameName { get; set; }
+        public string PlayerName { get; set; }
     }
 }
