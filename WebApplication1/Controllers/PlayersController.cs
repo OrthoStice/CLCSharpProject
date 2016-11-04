@@ -28,7 +28,10 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Players = new List<Player>
+            {
+                new PlayerEntryViewModel()
+            }
             if (player == null)
             {
                 return HttpNotFound();
@@ -53,7 +56,7 @@ namespace WebApplication1.Controllers
             {
                 var gameName = Session["GameName"];
                 var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
-                for (int i = (Convert.ToInt32(Session["NumOfPlayers"])); i > 0; i--)
+                foreach player in <Player>
                 {
                     db.Players.Add(player);
                     db.SaveChanges();
