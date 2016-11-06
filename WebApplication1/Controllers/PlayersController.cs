@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Models.PlayerEntryViewModel;
 
 namespace WebApplication1.Controllers
 {
@@ -28,15 +30,17 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Players = new List<Player>
+
+            var Players = new List<Player>
             {
-                new PlayerEntryViewModel()
-            }
-            if (player == null)
+
+            };
+
+            if (Players == null)
             {
                 return HttpNotFound();
             }
-            return View(player);
+            return View(Players);
         }
 
         // GET: Players/Create
@@ -50,22 +54,24 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PlayerName")] Player player)
+        public ActionResult Create(PlayerEntryViewModel gamePlayers)
         {
             if (ModelState.IsValid)
             {
                 var gameName = Session["GameName"];
                 var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
-                foreach player in <Player>
+                List<PlayerEntryViewModel> playerEntryViewModel = new List<PlayerEntryViewModel>();
+                foreach(string Player in gamePlayers)
                 {
-                    db.Players.Add(player);
+                    db.Players.Id.Add();
+                    db.Players.PlayerName.Add();
                     db.SaveChanges();
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index" );
             }
 
-            return View(player);
+            return View();
         }
 
 
@@ -89,6 +95,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Edit([Bind(Include = "Id,PlayerName")] Player player)
         {
             if (ModelState.IsValid)
