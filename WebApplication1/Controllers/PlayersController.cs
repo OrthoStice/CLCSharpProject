@@ -8,7 +8,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
-using WebApplication1.Models.PlayerEntryViewModel;
 
 namespace WebApplication1.Controllers
 {
@@ -61,10 +60,10 @@ namespace WebApplication1.Controllers
                 var gameName = Session["GameName"];
                 var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
                 List<PlayerEntryViewModel> playerEntryViewModel = new List<PlayerEntryViewModel>();
-                foreach(string Player in gamePlayers)
+                foreach(var player in gamePlayers)
                 {
-                    db.Players.Id.Add();
-                    db.Players.PlayerName.Add();
+                    db.Players.Add(player.Id);
+                    db.Players.Add(player.PlayerName);
                     db.SaveChanges();
                 }
                 db.SaveChanges();
