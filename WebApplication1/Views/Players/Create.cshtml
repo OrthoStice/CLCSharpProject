@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.PlayerEntryViewModel
+﻿@model WebApplication1.Models.Player
 
 @{
     ViewBag.Title = "Create";
@@ -18,12 +18,13 @@
         
  
        @for (int i = (Convert.ToInt32(Session["NumOfPlayers"])); i > 0; i--)
-       {         
+       {
+            @Html.HiddenFor(m => m.Id)
            <div class="form-group">
-            @Html.LabelFor(m => m.singlePlayer, "Player #" + playerNum + "'s Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.PlayerName, "Player #" + playerNum + "'s Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.singlePlayer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.singlePlayer, "", new { @class = "text-danger" })
+                @Html.EditorFor(m => m.PlayerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.PlayerName, "", new { @class = "text-danger" })
             </div>
         </div>
 
