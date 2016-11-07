@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201611032058361_simplify Player class.Designer.cs">
       <DependentUpon>201611032058361_simplify Player class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070121280_new user.cs" />
+    <Compile Include="Migrations\201611070121280_new user.Designer.cs">
+      <DependentUpon>201611070121280_new user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\PlayerEntryViewModel.cs" />
@@ -395,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611032058361_simplify Player class.resx">
       <DependentUpon>201611032058361_simplify Player class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070121280_new user.resx">
+      <DependentUpon>201611070121280_new user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

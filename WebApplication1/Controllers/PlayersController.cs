@@ -53,20 +53,20 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PlayerEntryViewModel gamePlayers)
+        public ActionResult Create(int Id, string PlayerName)
         {
             if (ModelState.IsValid)
             {
                 var gameName = Session["GameName"];
                 var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
                 List<PlayerEntryViewModel> playerEntryViewModel = new List<PlayerEntryViewModel>();
-                foreach(var player in gamePlayers)
+
+                foreach(var gamePlayer in playerEntryViewModel)
                 {
-                    db.Players.Add(player.Id);
-                    db.Players.Add(player.PlayerName);
+                    Player player = new Player();
+                    db.Players.Add(player);
                     db.SaveChanges();
                 }
-                db.SaveChanges();
                 return RedirectToAction("Index" );
             }
 

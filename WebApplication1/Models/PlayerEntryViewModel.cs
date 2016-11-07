@@ -8,8 +8,11 @@ using WebApplication1.Models;
 namespace WebApplication1.Models
 {
     public class PlayerEntryViewModel : IEnumerable<Player>
+
     {
-        public List<PlayerEntryViewModel> GamePlayers { get; internal set; }
+        public string singlePlayer { get; set; }
+
+        public List<string> GamePlayers { get; internal set; }
 
         public IEnumerator<Player> GetEnumerator()
         {
