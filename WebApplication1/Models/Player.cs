@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class Player : IEnumerable<Player>
+    public class Player
     {
         public int Id { get ; internal set; }
 
@@ -16,15 +16,5 @@ namespace WebApplication1.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Player Name")]
         public string PlayerName { get; internal set; }
-
-        public IEnumerator<Player> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
