@@ -14,7 +14,8 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-       
+        private List<Player> listOfPlayers;
+
 
         // GET: Players
         public ActionResult Index()
@@ -53,16 +54,18 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int id, string player)
+        public ActionResult Create(string playerName)
         {
             if (ModelState.IsValid)
             {
+                Player player = new Player();
                 var gameName = Session["GameName"];
-                var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
-                foreach(Player in List<Player>)
-                db.Players.Add(id,player);
-                db.SaveChanges();
-
+                var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);              
+                foreach (object Player in listOfPlayers)
+                {
+                    db.Players.Add(player);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index" );
             }
 
