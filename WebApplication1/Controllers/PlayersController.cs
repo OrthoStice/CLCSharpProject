@@ -14,7 +14,6 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private List<Player> listOfPlayers;
 
 
         // GET: Players
@@ -44,9 +43,16 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Players/Create
-        public ActionResult Create()
+        public ActionResult GetPlayers()
         {
-            return View();
+            var model = new PlayerViewModel
+            {
+                players = new List<Player>
+                {
+                    new Player()
+                }
+            };
+            return View(model);
         }
 
         // POST: Players/Create
@@ -54,18 +60,11 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(string playerName)
+        public ActionResult AddPlayers(PlayerViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Player player = new Player();
-                var gameName = Session["GameName"];
-                var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);              
-                foreach (object Player in listOfPlayers)
-                {
-                    db.Players.Add(player);
-                    db.SaveChanges();
-                }
+                return View(model);
                 return RedirectToAction("Index" );
             }
 

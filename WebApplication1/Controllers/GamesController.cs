@@ -59,7 +59,7 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 Session["GameName"] = game.GameName;
                 Session["NumOfPlayers"] = game.numOfPlayers;
-                return RedirectToAction("Create","Players");
+                return RedirectToAction("GetPlayers","Players");
             }
 
             return View();

@@ -4,26 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebApplication1.Migrations;
+using WebApplication1.Controllers;
+
 
 namespace WebApplication1.Models
 {
-    public class PlayerViewModel 
+    public class PlayerViewModel
     {
-        public Player[] listOfPlayers { get; set; }
-
-        public PlayerName Player
-        {
-            get
-            {
-                return player;
-            }
-
-            set
-            {
-                player = value;
-            }
-        }
-
+        public List<Player> players { get; set; }
     }
 
 }
