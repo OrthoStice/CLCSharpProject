@@ -19,13 +19,20 @@
        @for (int i = (Convert.ToInt32(Session["NumOfPlayers"])); i > 0; i--)
        {         
            <div class="form-group">
-            @Html.LabelFor(model => model.PlayerName, "Player #" + playerNum + "'s Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PlayerFirstName, "Player #" + playerNum + "'s Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PlayerName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PlayerName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PlayerFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PlayerFirstName, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @*<hr/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlayerGameName, "Player #" + playerNum + "'s Game Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PlayerGameName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PlayerGameName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@ 
         <hr />
         playerNum++;
        }
