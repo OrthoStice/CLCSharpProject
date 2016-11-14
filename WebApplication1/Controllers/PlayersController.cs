@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,7 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
 
 
         // GET: Players
@@ -45,14 +47,7 @@ namespace WebApplication1.Controllers
         // GET: Players/Create
         public ActionResult GetPlayers()
         {
-            var model = new PlayerViewModel
-            {
-                players = new List<Player>
-                {
-                    new Player()
-                }
-            };
-            return View(model);
+            return View();
         }
 
         // POST: Players/Create
@@ -60,15 +55,15 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPlayers(PlayerViewModel model)
+        public ActionResult GetPlayers(IList<Player> players)
         {
             if (ModelState.IsValid)
             {
-                return View(model);
-                return RedirectToAction("Index" );
+                db.Players.Add();
+                return View(players);
             }
 
-            return View();
+            return View("Index");
         }
 
 

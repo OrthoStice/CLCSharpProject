@@ -5,13 +5,16 @@ using System.Linq;
 using System.Web;
 using WebApplication1.Migrations;
 using WebApplication1.Controllers;
-
+using WebApplication1.Models;
 
 namespace WebApplication1.Models
 {
     public class PlayerViewModel
     {
-        public List<Player> players { get; set; }
+        public IList<Player> players
+        {
+            get; set;
+        }
     }
 
 }
