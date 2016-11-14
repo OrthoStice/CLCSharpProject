@@ -55,12 +55,18 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetPlayers(IList<Player> players)
+        public ActionResult GetPlayers(PlayerViewModel players)
         {
             if (ModelState.IsValid)
             {
-                db.Players.Add();
-                return View(players);
+                var numOfPlayers = (Convert.ToInt32(Session["NumOfPlayers"]));
+                Player player = new Player();
+                IList<Player> playerList = new Player[numOfPlayers];
+                for (int i = 0; i < playerList.Count; i++)
+                { 
+                    db.Players.Add(playerList[i]);
+                    return View(players);
+                }
             }
 
             return View("Index");
