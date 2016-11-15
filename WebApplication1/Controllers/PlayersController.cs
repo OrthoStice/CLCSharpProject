@@ -47,7 +47,13 @@ namespace WebApplication1.Controllers
         // GET: Players/Create
         public ActionResult GetPlayers()
         {
-            return View();
+            var players = new List<Player>();
+            var count = (Convert.ToInt32(Session["NumOfPlayers"]));
+            for (int i = 0; i < count; i++)
+            {
+                players.Add(new Player() { PlayerName = "something" });
+            }
+            return View(players);
         }
 
         // POST: Players/Create
@@ -55,17 +61,14 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetPlayers(PlayerViewModel players)
+        public ActionResult GetPlayers(List<Player> players)
         {
             if (ModelState.IsValid)
             {
-                var numOfPlayers = (Convert.ToInt32(Session["NumOfPlayers"]));
-                Player player = new Player();
-                IList<Player> playerList = new Player[numOfPlayers];
-                for (int i = 0; i < playerList.Count; i++)
+                for (int i = 0; i < players.Count; i++)
                 { 
-                    db.Players.Add(playerList[i]);
-                    return View(players);
+                    db.Players.Add(players[i]);
+                    db.SaveChanges();
                 }
             }
 

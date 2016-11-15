@@ -11,7 +11,11 @@ namespace WebApplication1.Models
 {
     public class PlayerViewModel
     {
-        public IList<Player> players
+    //    public PlayerViewModel()
+    //    {
+    //        players = new List<Player>();
+    //    }
+        public List<Player> players
         {
             get; set;
         }
