@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -13,7 +15,8 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-       
+
+
 
         // GET: Players
         public ActionResult Index()
@@ -28,18 +31,29 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
+
+            var Players = new List<Player>
+            {
+
+            };
+
+            if (Players == null)
             {
                 return HttpNotFound();
             }
-            return View(player);
+            return View(Players);
         }
 
         // GET: Players/Create
-        public ActionResult Create()
+        public ActionResult GetPlayers()
         {
-            return View();
+            var players = new List<Player>();
+            var count = (Convert.ToInt32(Session["NumOfPlayers"]));
+            for (int i = 0; i < count; i++)
+            {
+                players.Add(new Player() { PlayerName = "something" });
+            }
+            return View(players);
         }
 
         // POST: Players/Create
@@ -47,22 +61,18 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PlayerName")] Player player)
+        public ActionResult GetPlayers(List<Player> players)
         {
             if (ModelState.IsValid)
             {
-                var gameName = Session["GameName"];
-                var numberOfPlayers = Convert.ToInt32(Session["NumOfPlayers"]);
-                for (int i = (Convert.ToInt32(Session["NumOfPlayers"])); i > 0; i--)
-                {
-                    db.Players.Add(player);
+                for (int i = 0; i < players.Count; i++)
+                { 
+                    db.Players.Add(players[i]);
                     db.SaveChanges();
                 }
-                db.SaveChanges();
-                return RedirectToAction("Index" );
             }
 
-            return View(player);
+            return View("Index");
         }
 
 
@@ -86,6 +96,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Edit([Bind(Include = "Id,PlayerName")] Player player)
         {
             if (ModelState.IsValid)

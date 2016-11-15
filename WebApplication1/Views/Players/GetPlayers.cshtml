@@ -1,0 +1,38 @@
+﻿@model List<WebApplication1.Models.Player>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2> @Session["GameName"]</h2>
+
+@using (Html.BeginForm("GetPlayers", "Players"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @for (int i = 0; i < (Convert.ToInt32(Session["NumOfPlayers"])); i++)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model[i].PlayerName)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].PlayerName)
+                </div>
+            </div>
+
+            <hr />
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Players" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
