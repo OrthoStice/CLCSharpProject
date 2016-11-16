@@ -11,7 +11,6 @@ namespace WebApplication1.Models
         public int Id { get; set; }
 
         public int GameId { get; set; }
-        [ForeignKey("GameId")]
         public Game game { get; set; }
 
         public int TurnNum { get; set; }
@@ -23,7 +22,6 @@ namespace WebApplication1.Models
         }
 
         public int PlayerId { get; set; }
-        [ForeignKey("PlayerId")]
         public Player player { get; set; }
 
         public int TurnScore { get; set; }

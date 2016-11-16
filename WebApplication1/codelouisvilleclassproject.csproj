@@ -388,12 +388,12 @@
     <Content Include="Views\Players\Details.cshtml" />
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
+    <Content Include="Views\Games\View33.cshtml" />
     <Content Include="Views\Scores\Create.cshtml" />
     <Content Include="Views\Scores\Delete.cshtml" />
     <Content Include="Views\Scores\Details.cshtml" />
     <Content Include="Views\Scores\Edit.cshtml" />
     <Content Include="Views\Scores\Index.cshtml" />
-    <Content Include="Views\Games\View33.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

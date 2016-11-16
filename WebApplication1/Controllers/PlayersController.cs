@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
             var count = (Convert.ToInt32(Session["NumOfPlayers"]));
             for (int i = 0; i < count; i++)
             {
-                players.Add(new Player() { PlayerName = "something" });
+                players.Add(new Player() { PlayerName = "Enter Player Name" });
             }
             return View(players);
         }
@@ -72,7 +72,7 @@ namespace WebApplication1.Controllers
                 }
             }
 
-            return View("Index");
+            return RedirectToAction("Create","Scores");
         }
 
 

@@ -39,8 +39,8 @@ namespace WebApplication1.Controllers
         // GET: Scores/Create
         public ActionResult Create()
         {
-            ViewBag.GameId = new SelectList(db.Games, "Id", "GameName");
-            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName");
+            ViewBag.GameId = db.Games.Where(Game => Game.GameName == Convert.ToString(Session["GameName"]));
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace WebApplication1.Controllers
             }
 
             ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
-            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerName", score.PlayerId);
             return View(score);
         }
 
@@ -76,7 +76,7 @@ namespace WebApplication1.Controllers
                 return HttpNotFound();
             }
             ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
-            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerName", score.PlayerId);
             return View(score);
         }
 
@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GameId = new SelectList(db.Games, "Id", "GameName", score.GameId);
-            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerFirstName", score.PlayerId);
+            ViewBag.PlayerId = new SelectList(db.Players, "Id", "PlayerName", score.PlayerId);
             return View(score);
         }
 
