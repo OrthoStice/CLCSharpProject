@@ -49,9 +49,10 @@ namespace WebApplication1.Controllers
         {
             var players = new List<Player>();
             var count = (Convert.ToInt32(Session["NumOfPlayers"]));
+            Score score = new Score();
             for (int i = 0; i < count; i++)
             {
-                players.Add(new Player() { PlayerName = "Enter Player Name" });
+                players.Add(new Player() { PlayerName = "Enter Player Name"});
             }
             return View(players);
         }
@@ -61,18 +62,23 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetPlayers(List<Player> players)
+        public ActionResult GetPlayers(List<Player> players, Score score)
         {
             if (ModelState.IsValid)
             {
+                var tempID = Session["GameName"] + Convert.ToString(DateTime.Today);
                 for (int i = 0; i < players.Count; i++)
                 { 
                     db.Players.Add(players[i]);
+                    //this is like a mega hacky way to do this but it's just temporary until i can get the actual scoring functionality in
+
+                    db.Scores.Add(new Score() { PlayerName = players[i].PlayerName, GameName = Convert.ToString(Session["GameName"]), TempScoreID = tempID, SingleScore = players[i].PlayerScore });
                     db.SaveChanges();
+                    Session["Player #"+i] = players[i];
                 }
             }
 
-            return RedirectToAction("Create","Scores");
+            return RedirectToAction("Index","Games");
         }
 
 

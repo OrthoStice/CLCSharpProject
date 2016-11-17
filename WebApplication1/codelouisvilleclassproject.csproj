@@ -213,7 +213,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
-    <Compile Include="Controllers\ScoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,9 +248,29 @@
     <Compile Include="Migrations\201611070121280_new user.Designer.cs">
       <DependentUpon>201611070121280_new user.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611071841366_new player guid.cs" />
-    <Compile Include="Migrations\201611071841366_new player guid.Designer.cs">
-      <DependentUpon>201611071841366_new player guid.cs</DependentUpon>
+    <Compile Include="Migrations\201611170300119_PlayerScore.cs" />
+    <Compile Include="Migrations\201611170300119_PlayerScore.Designer.cs">
+      <DependentUpon>201611170300119_PlayerScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611170324130_game name on score table.cs" />
+    <Compile Include="Migrations\201611170324130_game name on score table.Designer.cs">
+      <DependentUpon>201611170324130_game name on score table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611170410356_hacking scores model for MVP.cs" />
+    <Compile Include="Migrations\201611170410356_hacking scores model for MVP.Designer.cs">
+      <DependentUpon>201611170410356_hacking scores model for MVP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611170424558_hacking scores model for MVP try 2.cs" />
+    <Compile Include="Migrations\201611170424558_hacking scores model for MVP try 2.Designer.cs">
+      <DependentUpon>201611170424558_hacking scores model for MVP try 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611170431375_hacking scores model for MVP last time.cs" />
+    <Compile Include="Migrations\201611170431375_hacking scores model for MVP last time.Designer.cs">
+      <DependentUpon>201611170431375_hacking scores model for MVP last time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611170433551_hacking scores model for MVP last time really truly.cs" />
+    <Compile Include="Migrations\201611170433551_hacking scores model for MVP last time really truly.Designer.cs">
+      <DependentUpon>201611170433551_hacking scores model for MVP last time really truly.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -389,11 +408,6 @@
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
     <Content Include="Views\Games\View33.cshtml" />
-    <Content Include="Views\Scores\Create.cshtml" />
-    <Content Include="Views\Scores\Delete.cshtml" />
-    <Content Include="Views\Scores\Details.cshtml" />
-    <Content Include="Views\Scores\Edit.cshtml" />
-    <Content Include="Views\Scores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,8 +443,23 @@
     <EmbeddedResource Include="Migrations\201611070121280_new user.resx">
       <DependentUpon>201611070121280_new user.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611071841366_new player guid.resx">
-      <DependentUpon>201611071841366_new player guid.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611170300119_PlayerScore.resx">
+      <DependentUpon>201611170300119_PlayerScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170324130_game name on score table.resx">
+      <DependentUpon>201611170324130_game name on score table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170410356_hacking scores model for MVP.resx">
+      <DependentUpon>201611170410356_hacking scores model for MVP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170424558_hacking scores model for MVP try 2.resx">
+      <DependentUpon>201611170424558_hacking scores model for MVP try 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170431375_hacking scores model for MVP last time.resx">
+      <DependentUpon>201611170431375_hacking scores model for MVP last time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170433551_hacking scores model for MVP last time really truly.resx">
+      <DependentUpon>201611170433551_hacking scores model for MVP last time really truly.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

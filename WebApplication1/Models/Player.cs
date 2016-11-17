@@ -16,5 +16,8 @@ namespace WebApplication1.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Player Name")]
         public string PlayerName { get; set; }
+
+        [Display(Name = "Player Score")]
+        public int PlayerScore { get; set; }
     }
 }

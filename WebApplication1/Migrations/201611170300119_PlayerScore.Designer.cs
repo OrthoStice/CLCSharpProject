@@ -7,13 +7,13 @@ namespace WebApplication1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class newplayerguid : IMigrationMetadata
+    public sealed partial class PlayerScore : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(newplayerguid));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PlayerScore));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611071841366_new player guid"; }
+            get { return "201611170300119_PlayerScore"; }
         }
         
         string IMigrationMetadata.Source
