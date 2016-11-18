@@ -14,8 +14,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
         @for (int i = 0; i < (Convert.ToInt32(Session["NumOfPlayers"])); i++)
         {
+            @Html.HiddenFor(model => model[i].PlayerGameID)
             <div class="form-group">
                 @Html.LabelFor(model => model[i].PlayerName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">

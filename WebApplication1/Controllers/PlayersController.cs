@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
             Score score = new Score();
             for (int i = 0; i < count; i++)
             {
-                players.Add(new Player() { PlayerName = "Enter Player Name"});
+                players.Add(new Player() { PlayerName = "Enter Player Name", PlayerGameID = Convert.ToInt32(Session["CurrentGame"])});
             }
             return View(players);
         }
@@ -66,13 +66,9 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var tempID = Session["GameName"] + Convert.ToString(DateTime.Today);
                 for (int i = 0; i < players.Count; i++)
                 { 
                     db.Players.Add(players[i]);
-                    //this is like a mega hacky way to do this but it's just temporary until i can get the actual scoring functionality in
-
-                    db.Scores.Add(new Score() { PlayerName = players[i].PlayerName, GameName = Convert.ToString(Session["GameName"]), TempScoreID = tempID, SingleScore = players[i].PlayerScore });
                     db.SaveChanges();
                     Session["Player #"+i] = players[i];
                 }

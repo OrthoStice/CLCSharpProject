@@ -19,5 +19,8 @@ namespace WebApplication1.Models
 
         [Display(Name = "Player Score")]
         public int PlayerScore { get; set; }
+
+        public int PlayerGameID { get; set; }
+
     }
 }

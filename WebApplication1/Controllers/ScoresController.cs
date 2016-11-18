@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,125 +8,113 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections;
 
 namespace WebApplication1.Controllers
 {
-    public class GamesController : Controller
+    public class ScoresController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Games
+        // GET: Scores
         public ActionResult Index()
         {
             var currentUser = HttpContext.User.Identity.GetUserId();
-            var userGames = db.Games.Where(Game => Game.UserId == currentUser);
-            return View(userGames);
+            var userScores = db.Scores.Where(Score => Score.UserId == currentUser);
+            return View(userScores.ToList());
         }
 
-        // GET: Games/Details/5
+
+        // GET: Scores/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GamePlayerViewModel gameViewModel = new GamePlayerViewModel();
-            var listPlayers = db.Players.Where(Player => Player.PlayerGameID == id);
-            gameViewModel.game = db.Games.Find(id);
-            gameViewModel.players = listPlayers.ToList();
-            if (gameViewModel == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(gameViewModel);
+            return View(score);
         }
 
-        // GET: Games/Create
+        // GET: Scores/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: Scores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GameName,GameStartDate,UserId,numOfPlayers")] Game game)
+        public ActionResult Create([Bind(Include = "Id,GameName,PlayerName,SingleScore,TempScoreID,UserId")] Score score)
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
+                db.Scores.Add(score);
                 db.SaveChanges();
-                Session["GameName"] = game.GameName;
-                Session["NumOfPlayers"] = game.numOfPlayers;
-                Session["CurrentGame"] = game.Id;
-                return RedirectToAction("GetPlayers","Players");
+                return RedirectToAction("Index");
             }
 
-            return View();
+            return View(score);
         }
 
-        // GET: Games/Edit/5
+        // GET: Scores/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GamePlayerViewModel gameViewModel = new GamePlayerViewModel();
-            var listPlayers = db.Players.Where(Player => Player.PlayerGameID == id);
-            gameViewModel.game = db.Games.Find(id);
-            gameViewModel.players = listPlayers.ToList();
-            if (gameViewModel == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(gameViewModel);
+            return View(score);
         }
 
-        // POST: Games/Edit/5
+        // POST: Scores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Game game, List<Player> playersList)
+        public ActionResult Edit([Bind(Include = "Id,GameName,PlayerName,SingleScore,TempScoreID,UserId")] Score score)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(game).State = EntityState.Modified;
-                db.Entry(playersList).State = EntityState.Modified;
+                db.Entry(score).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(game);
+            return View(score);
         }
 
-        // GET: Games/Delete/5
+        // GET: Scores/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
-            if (game == null)
+            Score score = db.Scores.Find(id);
+            if (score == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(score);
         }
 
-        // POST: Games/Delete/5
+        // POST: Scores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Game game = db.Games.Find(id);
-            db.Games.Remove(game);
+            Score score = db.Scores.Find(id);
+            db.Scores.Remove(score);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -9,12 +9,9 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Models
 {
-    public class PlayerViewModel
+    public class GamePlayerViewModel
     {
-    //    public PlayerViewModel()
-    //    {
-    //        players = new List<Player>();
-    //    }
+        public Game game { get; set; }
         public List<Player> players
         {
             get; set;

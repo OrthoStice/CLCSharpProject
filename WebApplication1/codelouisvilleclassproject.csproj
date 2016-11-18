@@ -213,6 +213,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\ScoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,9 +273,13 @@
     <Compile Include="Migrations\201611170433551_hacking scores model for MVP last time really truly.Designer.cs">
       <DependentUpon>201611170433551_hacking scores model for MVP last time really truly.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611180236498_new view model.cs" />
+    <Compile Include="Migrations\201611180236498_new view model.Designer.cs">
+      <DependentUpon>201611180236498_new view model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\PlayerViewModel.cs" />
+    <Compile Include="Models\GamePlayerViewModel.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -408,6 +413,11 @@
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
     <Content Include="Views\Games\View33.cshtml" />
+    <Content Include="Views\Scores\Create.cshtml" />
+    <Content Include="Views\Scores\Delete.cshtml" />
+    <Content Include="Views\Scores\Details.cshtml" />
+    <Content Include="Views\Scores\Edit.cshtml" />
+    <Content Include="Views\Scores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -460,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611170433551_hacking scores model for MVP last time really truly.resx">
       <DependentUpon>201611170433551_hacking scores model for MVP last time really truly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611180236498_new view model.resx">
+      <DependentUpon>201611180236498_new view model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
