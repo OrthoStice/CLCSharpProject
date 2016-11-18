@@ -1,0 +1,7 @@
+This is the MVP for a web ap for keeping score for a super fun dice game called "Farkle"
+
+To begin all you do is register and start entering the info.
+
+Currently the app only keeps the final scores for players.  Eventually I'll add functionality for keep score during game play.
+
+I created this app to fulfill the requirements for CodeLouisville's C# course.
