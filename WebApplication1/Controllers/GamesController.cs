@@ -80,6 +80,7 @@ namespace WebApplication1.Controllers
             var listPlayers = db.Players.Where(Player => Player.PlayerGameID == id);
             gameViewModel.game = db.Games.Find(id);
             gameViewModel.players = listPlayers.ToList();
+            TempData["currentGame"] = gameViewModel.game.GameName;
             if (gameViewModel == null)
             {
                 return HttpNotFound();
@@ -92,16 +93,18 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Game game, List<Player> playersList)
+        public ActionResult Edit(GamePlayerViewModel gameView)
+
         {
+
             if (ModelState.IsValid)
             {
-                db.Entry(game).State = EntityState.Modified;
-                db.Entry(playersList).State = EntityState.Modified;
+                gameView.game.GameName = Convert.ToString(TempData["currentGame"]);
+                db.Entry(gameView.game.GameName).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","GamesController");
             }
-            return View(game);
+            return RedirectToAction("Index","Games");
         }
 
         // GET: Games/Delete/5

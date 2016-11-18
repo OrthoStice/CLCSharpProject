@@ -6,6 +6,7 @@ using System.Web;
 using WebApplication1.Migrations;
 using WebApplication1.Controllers;
 using WebApplication1.Models;
+using System.Web.Mvc;
 
 namespace WebApplication1.Models
 {
@@ -16,6 +17,7 @@ namespace WebApplication1.Models
         {
             get; set;
         }
+
     }
 
 }
